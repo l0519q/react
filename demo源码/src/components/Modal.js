@@ -4,15 +4,17 @@ ReactModal.setAppElement('#root')
 
 const Modal = props => {
     return (
-        <ReactModal 
+        <ReactModal
             className="modal"
-            isOpen={!!props.selectedOption} 
-            closeTimeoutMS={200} 
+            isOpen={!!props.selectedOption}
+            closeTimeoutMS={200}
             onRequestClose={props.handleClearSelectedOption}
         >
             <h3 className="modal__title">选中的选项</h3>
             <p className="modal__body">{props.selectedOption}</p>
-            <button className="button" onClick={props.handleClearSelectedOption}>好的</button>
+            <button className="button" onClick={props.handleClearSelectedOption}>
+                好的
+            </button>
         </ReactModal>
     )
 }

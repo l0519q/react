@@ -6,14 +6,16 @@ const Options = props => {
         <div>
             <div className="widget-header">
                 <h3 className="widget-header__title">你的选项</h3>
-                <button className="button button--link" onClick={props.handleRemoveAll}>删除所有</button>
+                <button className="button button--link" onClick={props.handleRemoveAll}>
+                    删除所有
+                </button>
             </div>
             {props.options.length === 0 && <p className="widget__message">请添加一个选项</p>}
             {
                 props.options.map((option, index) => (
-                    <Option 
-                        handleRemoveOption={props.handleRemoveOption} 
-                        option={option} 
+                    <Option
+                        handleRemoveOption={props.handleRemoveOption}
+                        option={option}
                         key={`option_${index}`}
                         count={index + 1}
                     />

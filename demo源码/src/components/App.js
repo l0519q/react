@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Header from './Header'
 import Action from './Action'
 import Options from './Options'
 import AddOption from './AddOption'
 import Modal from './Modal'
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.handleRemoveOption = this.handleRemoveOption.bind(this);
@@ -55,14 +55,14 @@ class App extends React.Component {
             return '不能输入重复的选项';
         } else {
             this.setState(prevState => ({
-                    options: prevState.options.concat(option)
-                }))
+                options: prevState.options.concat(option)
+            }))
         }
     }
     handleRemoveAll() {
         this.setState(() => ({
-                options: []
-            }))
+            options: []
+        }))
     }
     handlePick() {
         const index = Math.floor(Math.random() * this.state.options.length);
@@ -80,19 +80,25 @@ class App extends React.Component {
         const subTitle = '把你的命运交给电脑吧';
         return (
             <div>
-                <Header subTitle={subTitle}/>
+                <Header subTitle={subTitle} />
                 <div className="container">
-                    <Action hasOptions={this.state.options.length > 0} handlePick={this.handlePick}/>
+                    <Action
+                        hasOptions={this.state.options.length > 0}
+                        handlePick={this.handlePick}
+                    />
                     <div className="widget">
-                        <Options 
-                            options={this.state.options} 
-                            handleRemoveAll={this.handleRemoveAll} 
+                        <Options
+                            options={this.state.options}
+                            handleRemoveAll={this.handleRemoveAll}
                             handleRemoveOption={this.handleRemoveOption}
                         />
-                        <AddOption handleAddOption={this.handleAddOption}/>
+                        <AddOption handleAddOption={this.handleAddOption} />
                     </div>
                 </div>
-                <Modal handleClearSelectedOption={this.handleClearSelectedOption} selectedOption={this.state.selectedOption}/>
+                <Modal
+                    handleClearSelectedOption={this.handleClearSelectedOption}
+                    selectedOption={this.state.selectedOption}
+                />
             </div>
         )
     }
